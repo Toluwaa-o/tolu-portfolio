@@ -10,6 +10,8 @@ import github from '../images/github.png'
 import firebase from '../images/firebase.png'
 import mongoose from '../images/mongoose.png'
 import restAPI from '../images/rest-api.jpg'
+import rRouter from '../images/router.png'
+import rRedux from '../images/reduxx.png'
 import illustration from '../images/skills.png'
 import ScrollAnimation from 'react-animate-on-scroll'
 
@@ -26,7 +28,9 @@ export default function skills () {
         {name: 'Github', image: github},
         {name: 'Firebase', image: firebase},
         {name: 'Mongoose', image: mongoose},
-        {name: 'API Development', image: restAPI}
+        {name: 'API Development', image: restAPI},
+        {name: 'React Router', image: rRouter},
+        {name: 'Redux', image: rRedux}
     ]
 
     const mySkills = data.map(s => {
