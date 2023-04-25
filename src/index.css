@@ -164,6 +164,23 @@ header div {
   }
 }
 
+@keyframes detailsIn {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(50vh);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+}
+
 header li a {
   display: flex;
   gap: 1em;
@@ -466,6 +483,7 @@ fieldset > input::placeholder, fieldset > textarea::placeholder {
   grid-template-rows: 20vh auto;
   padding: 1em;
   padding-top: 1.5em;
+  animation: detailsIn .8s linear;
 }
 
 .tool-big {
@@ -483,6 +501,7 @@ fieldset > input::placeholder, fieldset > textarea::placeholder {
 #title {
   color: white;
   font-size: 2em;
+  border-bottom: 4px solid white;
 }
 
 .big-details {
@@ -825,15 +844,20 @@ fieldset > input::placeholder, fieldset > textarea::placeholder {
   }
 
   .big-top {
-    width: 55%;
+    width: 75%;
     margin: auto;
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   .mobile {
     grid-area: 2/2/4/3;
-    width: 60%;
+    width: 50%;
+    align-self: start;
     margin-left: auto;
+  }
+
+  .desktop {
+    width: 80%;
   }
 
   .details {
