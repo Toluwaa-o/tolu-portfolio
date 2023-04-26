@@ -25,7 +25,13 @@ export default function Page() {
     .then(data => setMyData(prev => {
       return { ...prev, data: data.data.portfolio }
     }))
-    .catch(err => setMyData(prev => ({ ...prev, err: err.message})))
+    .catch(e => {
+      if(e.message.toLowerCase() === 'network error'){
+        setMyData(prev => ({ ...prev, err: 'Please check your internet connection and try again'}))
+      }else {
+        setMyData(prev => ({ ...prev, err: 'Something wet wrong :/ please try again later'}))
+      }
+    })
   }, [])
 
   window.addEventListener('scroll', () => {
@@ -74,7 +80,7 @@ export default function Page() {
           <Contact />
         </main>
         <Footer />
-        </> : <Modal />}
+        </> : <Modal err={myData.err} />}
     </div>
   )
 }

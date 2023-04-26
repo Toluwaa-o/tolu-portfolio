@@ -4,7 +4,10 @@ import illustration from '../images/programmer.png'
 export default function Home() {
   const date = new Date()
   const hour = date.getHours()
-  const greeting = hour >= 5 && hour < 12 ? 'Good Morning' : hour >= 12 && hour < 5 ? 'Good Afternoon,' : 'Good Evening,' 
+  let greeting
+  if(hour >= 5 && hour < 12) greeting = 'Good Morning,'
+  else if(hour >= 12 && hour < 17) greeting = 'Good Afternoon,'
+  else greeting = 'Good Evening,' 
 
   return (
     <section className='home'>
