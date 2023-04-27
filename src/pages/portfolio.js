@@ -1,39 +1,30 @@
-import ScrollAnimation from 'react-animate-on-scroll'
-import Details from '../pages/details'
-import {useState} from 'react'
-
 export default function Portfolio(props) {
-  const [id, setId] = useState(null)
-
-  const portf = props.data.map(i => {
-    return (
-      <div onClick={() => setId(i._id)} key={i._id}>
-        <ScrollAnimation animateIn='fadeIn' delay={2} animateOut='fadeOut'>
-        <img src={i.desktopView} alt={i.name} />
-        <h4>{i.name}</h4>
-        <div className='tools'>
-          {i.toolsUsed.map(t => <p key={t}>{t}</p>)}
-        </div>
-        <p className='trigger'>View details</p>
-        </ScrollAnimation>
-      </div>
-    )
-  })
-
-  const clearId = () => setId(null)
 
   return (
-    <>
-    <section className='portfolio' id='portfolio'>
-      <h2>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{fill: 'rgba(0, 0, 0, 1)'}}><path d="M21 11h-3V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v14c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3v-6a1 1 0 0 0-1-1zM5 19a1 1 0 0 1-1-1V5h12v13c0 .351.061.688.171 1H5zm15-1a1 1 0 0 1-2 0v-5h2v5z"></path><path d="M6 7h8v2H6zm0 4h8v2H6zm5 4h3v2h-3z"></path></svg>
-        My Portfolio</h2>
-      
-      <div className='flex'>
-        {portf}
+    <section className='portfolio' id='portfolio'> 
+    <div className="direction">
+      <p>Click on the links to view the live page</p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{fill: '#251d1c'}}><path d="m18.707 12.707-1.414-1.414L13 15.586V6h-2v9.586l-4.293-4.293-1.414 1.414L12 19.414z"></path></svg>
+    </div>
+    
+      <h3>Projects</h3>
+      <div className='project-names'>
+        <div className='names'>
+        {props.data.map(i => {
+          return (
+              <p key={i._id}>{i.name} / <a href='i.link'>{i.link}</a></p>
+          )
+        })}
+        </div>
+        <div className='pages'>
+          <h4>Pages:</h4>
+          {props.num.map(x => {
+            return (
+              <p key={x} className='number' onClick={() => props.setPage(x)} style={{borderBottom: props.page === x && '3px solid #251d1c', fontWeight: props.page === x && '800'}}>{x}</p>
+            )
+          })}
+        </div>
       </div>
     </section>
-    {id && <Details clear={clearId} id={id} />}
-    </>
   )
 }
