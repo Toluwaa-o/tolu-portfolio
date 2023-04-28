@@ -12,7 +12,7 @@ export default function Portfolio(props) {
         <div className='names'>
         {props.data.map(i => {
           return (
-              <p key={i._id}>{i.name} / <a href='i.link'>{i.link}</a></p>
+              <p key={i._id}>{i.name} / <a href={i.link}>{i.link}</a></p>
           )
         })}
         </div>
