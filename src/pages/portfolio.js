@@ -1,30 +1,67 @@
+import {Link} from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 export default function Portfolio(props) {
+  const [slides, setPage] = useState({
+    num: null,
+    currSlide: null
+  })
+
+  const [mis, setMis] = useState(null)
+
+  const num = document.querySelectorAll('.port-items').length
+
+  useEffect(() => {
+    setPage({currSlide: 0, num: document.querySelectorAll('.port-items').length})
+  }, [num])
+
+  useEffect(() => {
+
+    if(mis) {
+      document.querySelectorAll('.port-items')[slides.currSlide].scrollIntoView()
+    }
+
+  }, [slides.currSlide])
+
+  useEffect(() => {
+    AOS.init({duration: 2000})
+  }, [])
+
 
   return (
-    <section className='portfolio' id='portfolio'> 
-    <div className="direction">
-      <p>Click on the links to view the live page</p>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{fill: '#251d1c'}}><path d="m18.707 12.707-1.414-1.414L13 15.586V6h-2v9.586l-4.293-4.293-1.414 1.414L12 19.414z"></path></svg>
-    </div>
-    
-      <h3>Projects</h3>
-      <div className='project-names'>
-        <div className='names'>
+    <div data-aos='flip-right' id='portfolio' className="portfolio part">
+      <h3>My Portfolio</h3>
+      <svg onClick={() => {
+        setMis(1)
+        return setPage(prev => ({...prev, currSlide: prev.currSlide > 0 ? prev.currSlide - 1 : 0}))
+      }} className='left' xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+      <section className="slide">
         {props.data.map(i => {
           return (
-              <p key={i._id}>{i.name} / <a href={i.link}>{i.link}</a></p>
+            <div className='port-items' key={i._id}>
+              <img className='desktop' src={i.desktopView} alt={i.title} />
+              <img className='mobile' src={i.mobileView} alt={i.title} />
+              <div>
+                <h3>{i.name}</h3>
+                <p className="port-desc">{i.description}</p>
+                <section>
+                  {i.toolsUsed.map(tool => <p className="" key={tool}>{tool}</p>)}
+                </section>
+                <Link to={i.link}>View live</Link>
+              </div>
+            </div>
           )
         })}
+      </section>
+      <svg onClick={() => {
+        setMis(1)
+        return setPage(prev => ({...prev, currSlide: prev.currSlide < prev.num - 2 ? prev.currSlide + 1 : prev.num - 1}))
+      }} className='right' xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
+      <div className='pagination'>
+        {props.num.map(number => <p style={{background: props.page === number ? 'var(--pink)' : 'var(--purplish)'}} onClick={() => props.setPage(number)} key={number}>{number}</p>)}
         </div>
-        <div className='pages'>
-          <h4>Pages:</h4>
-          {props.num.map(x => {
-            return (
-              <p key={x} className='number' onClick={() => props.setPage(x)} style={{borderBottom: props.page === x && '3px solid #251d1c', fontWeight: props.page === x && '800'}}>{x}</p>
-            )
-          })}
-        </div>
-      </div>
-    </section>
+    </div>
   )
 }

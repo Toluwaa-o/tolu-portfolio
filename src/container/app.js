@@ -1,14 +1,10 @@
-import { createHashRouter, createRoutesFromElements, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from "react-router-dom";
 import Page from './page'
-import Index from "../pages/index";
-import Info from '../pages/Info'
+import Error from "../pages/Error";
 
-const router = createHashRouter(
+const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<Page />} >
-            <Route index element={<Index />} />
-            <Route path='/info' element={<Info />} />
-        </Route>
+        <Route path='/' element={<Page />} errorElement={<Error />} />
     )
 )
 

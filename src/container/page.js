@@ -3,20 +3,26 @@ import Modal from '../pages/modal'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Footer from '../components/footer/footer'
-import { Outlet } from 'react-router-dom'
+import About from "../pages/about"
+import Portfolio from '../pages/portfolio'
+import Home from "../pages/home"
 
 export default function Page() {
   const [ myData, setMyData ] = useState({
     data: null,
-    err: null
+    err: null,
+    numOfPages: null, 
+    page: 1
   })
 
-  const apiUrl = 'https://portfolio-api-y4pv.onrender.com/portfolio?limit=0'
+  const [page, setPage] = useState(1)
+
+  const apiUrl = `https://portfolio-api-y4pv.onrender.com/portfolio?page=${page}`
 
   useEffect(() => {
     axios.get(apiUrl)
     .then(data => setMyData(prev => {
-      return { ...prev, data: data.data.portfolio }
+      return { ...prev, data: data.data.portfolio, id: data.data.portfolio[0]._id, numOfPages: data.data.numOfPages, page: page }
     }))
     .catch(e => {
       if(e.message.toLowerCase() === 'network error'){
@@ -25,7 +31,14 @@ export default function Page() {
         setMyData(prev => ({ ...prev, err: 'Something went wrong :/ please try again later'}))
       }
     })
-  }, [])
+    
+  }, [page])
+
+  let num = []
+  
+  for(let i = 1; i < Number(myData.numOfPages + 1); i++){
+          num.push(i)
+      }
 
   return (
     <div>
@@ -33,7 +46,9 @@ export default function Page() {
         <>
         <Header />
         <main>
-          <Outlet />
+          <Home />
+          <About />
+          <Portfolio data={myData.data} page={myData.page} setPage ={setPage} num={num} />
         </main>
         <Footer />
         </> : <Modal err={myData.err} />}
