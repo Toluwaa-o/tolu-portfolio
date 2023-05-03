@@ -31,7 +31,7 @@ export default function Portfolio(props) {
 
 
   return (
-    <div data-aos='flip-right' id='portfolio' className="portfolio part">
+    <div id='portfolio' className="portfolio part">
       <h3>My Portfolio</h3>
       <svg onClick={() => {
         setMis(1)
@@ -40,7 +40,7 @@ export default function Portfolio(props) {
       <section className="slide">
         {props.data.map(i => {
           return (
-            <div className='port-items' key={i._id}>
+            <div data-aos='flip-right' className='port-items' key={i._id}>
               <img className='desktop' src={i.desktopView} alt={i.title} />
               <img className='mobile' src={i.mobileView} alt={i.title} />
               <div>
