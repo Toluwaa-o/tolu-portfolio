@@ -13,7 +13,7 @@ export default function About() {
       <div data-aos='fade-left' className="about part" id='about'>
         <h2>About Me</h2>
         <p className='description'>
-          My name is <span>Ogunleye Toluwalashe</span>. I am a 20 Year Old <span>Full stack developer</span> with a bachelor's degree in Computer Science. I specialize in the <span>MERN Stack (MongoDB, Express, React & Node JS)</span>.
+          I am a 20 Year Old <span>Full stack developer</span> with a bachelor's degree in Computer Science. I specialize in the <span>MERN Stack (MongoDB, Express, React & Node JS)</span>.
         </p>
 
         <h3>Technologies i have worked with include:</h3>
