@@ -176,10 +176,12 @@ main {
 }
 
 .home {
+  box-sizing: border-box;
+  min-height: 90vh;
   padding-top: 10.5em;
   display: grid;
   gap: 2em;
-  margin-bottom: 28vh;
+  margin-bottom: 4em;
 }
 
 .home > h2 > a {
