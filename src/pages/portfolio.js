@@ -60,8 +60,22 @@ export default function Portfolio(props) {
         return setPage(prev => ({...prev, currSlide: prev.currSlide < prev.num - 2 ? prev.currSlide + 1 : prev.num - 1}))
       }} className='right' xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
       <div className='pagination'>
-        {props.num.map(number => <p style={{background: props.page === number ? 'var(--pink)' : 'var(--purplish)'}} onClick={() => props.setPage(number)} key={number}>{number}</p>)}
-        </div>
+     <span onClick={() => {
+        if(props.page > 1 ){
+          props.setPage(props.page - 1)
+        }
+      }} style={{background: props.page === 1 ? '#34495E70' : '#6e81ff'}}>
+      <svg  xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+     </span>
+      <p>Page {props.page} of {props.num}</p>
+      <span onClick={() => {
+        if(props.page < props.num){
+          props.setPage(props.page + 1)
+        }
+      }} style={{background: props.page === props.num ? '#34495E70' : '#6e81ff'}}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" ><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
+      </span>
+      </div>
     </div>
   )
 }

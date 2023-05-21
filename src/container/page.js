@@ -34,11 +34,6 @@ export default function Page() {
     
   }, [page])
 
-  let num = []
-  
-  for(let i = 1; i < Number(myData.numOfPages + 1); i++){
-          num.push(i)
-      }
 
   return (
     <div>
@@ -48,7 +43,7 @@ export default function Page() {
         <main>
           <Home />
           <About />
-          <Portfolio data={myData.data} page={myData.page} setPage ={setPage} num={num} />
+          <Portfolio data={myData.data} page={myData.page} setPage ={setPage} num={myData.numOfPages} />
         </main>
         <Footer />
         </> : <Modal err={myData.err} />}

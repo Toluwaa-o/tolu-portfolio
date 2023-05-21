@@ -281,7 +281,7 @@ main {
   padding: 1em;
 }
 
-.portfolio svg {
+.portfolio > svg {
   display: none;
 }
 
@@ -377,26 +377,21 @@ main {
 }
 
 .pagination {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 25%;
-  background: var(--purplish);
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  color: var(--darkBlue);
+  margin-block: 2em 1em;
   font-weight: 700;
-  width: 50%;
-  margin: auto;
-  margin-top: 1em;
 }
 
-.pagination > p {
-  border-right: 3px solid white;
-}
-
-.pagination > p:last-child {
-  border: none;
+.pagination > span {
+  display: grid;
+  cursor: pointer;
+  place-content: center;
+  background: var(--darkBlue);
+  fill: white;
 }
 
 .footer *{
