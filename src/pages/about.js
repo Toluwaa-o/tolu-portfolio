@@ -24,7 +24,7 @@ export default function About() {
         <ul>
           {skills_left.map((skill) => {
             return (
-              <li>
+              <li key={skill}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -43,7 +43,7 @@ export default function About() {
         <ul>
           {skills_right.map((skill) => {
             return (
-              <li>
+              <li key={skill}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
