@@ -612,20 +612,14 @@ main {
   }
 
   .slide {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 100%;
-    overflow-x: scroll;
-    scrollbar-width: 0;
-    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
     margin: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
   }
 
   .slide > .port-items {
-    scroll-snap-align: start;
     max-width: unset;
+    width: 45%;
     grid-template-columns: 60% 40%;
     padding: 2em;
     gap: 2em;
@@ -635,7 +629,7 @@ main {
 
   .slide div section p {
     color: var(--purplish) !important;
-    font-size: .9em !important;
+    font-size: .7em !important;
     font-weight: 800 !important;
     padding-left: .3em;
   }
@@ -662,18 +656,19 @@ main {
   }
 
   .slide > div h3 {
-    font-size: 1.8em;
+    font-size: 1.3em;
   }
 
   .slide > .port-items p {
-    font-size: 1em;
+    font-size: .8em;
+    letter-spacing: 1px;
     color: rgb(59, 59, 59);
   }
 
-  .port-desc {
+  /* .port-desc {
     display: unset;
     text-transform: none !important;
-  }
+  } */
 
   .mobile {
     display: none;

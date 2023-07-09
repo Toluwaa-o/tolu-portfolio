@@ -4,30 +4,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Portfolio(props) {
-  const [slides, setPage] = useState({
-    num: null,
-    currSlide: null,
-  });
-
-  const [mis, setMis] = useState(null);
-
-  const num = document.querySelectorAll(".port-items").length;
-
-  useEffect(() => {
-    setPage({
-      currSlide: 0,
-      num: document.querySelectorAll(".port-items").length,
-    });
-  }, [num]);
-
-  useEffect(() => {
-    if (mis) {
-      document
-        .querySelectorAll(".port-items")
-        [slides.currSlide].scrollIntoView();
-    }
-  }, [slides.currSlide]);
-
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
@@ -35,22 +11,6 @@ export default function Portfolio(props) {
   return (
     <div id="portfolio" className="portfolio part">
       <h3>My Portfolio</h3>
-      <svg
-        onClick={() => {
-          setMis(1);
-          return setPage((prev) => ({
-            ...prev,
-            currSlide: prev.currSlide > 0 ? prev.currSlide - 1 : 0,
-          }));
-        }}
-        className="left"
-        xmlns="http://www.w3.org/2000/svg"
-        width="100"
-        height="100"
-        viewBox="0 0 24 24"
-      >
-        <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-      </svg>
       <section className="slide">
         {props.data.map((i) => {
           return (
@@ -73,23 +33,7 @@ export default function Portfolio(props) {
           );
         })}
       </section>
-      <svg
-        onClick={() => {
-          setMis(1);
-          return setPage((prev) => ({
-            ...prev,
-            currSlide:
-              prev.currSlide < prev.num - 2 ? prev.currSlide + 1 : prev.num - 1,
-          }));
-        }}
-        className="right"
-        xmlns="http://www.w3.org/2000/svg"
-        width="100"
-        height="100"
-        viewBox="0 0 24 24"
-      >
-        <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
-      </svg>
+
       <div className="pagination">
         <span
           onClick={() => {
