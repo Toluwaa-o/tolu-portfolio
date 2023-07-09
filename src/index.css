@@ -579,6 +579,12 @@ main {
   }
 
   .about {
+    border-top: 8px solid var(--pink);
+    border-left: none;
+    padding-top: 3em;
+    text-align: center;
+    display: grid;
+    place-content: center;
     width: 70%;
     margin-inline: auto;
     margin-bottom: 20vh;
@@ -595,6 +601,10 @@ main {
 
   .about h3 {
     font-size: 1.5em;
+  }
+
+  .about section {
+    margin: auto;
   }
 
   .about li {
